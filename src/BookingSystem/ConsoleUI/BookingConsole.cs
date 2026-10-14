@@ -55,7 +55,10 @@ public class BookingConsole(BookingService service)
     {
         Console.Write("Customer name: ");
         var searchTerm = Console.ReadLine() ?? string.Empty;
-        ShowBookings(service.Search(searchTerm));
+        if (string.IsNullOrWhiteSpace(searchTerm))
+            Console.WriteLine("Customer name is required.");
+        else
+            ShowBookings(service.Search(searchTerm));
     }
 
     private void CreateBooking()
