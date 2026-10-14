@@ -60,6 +60,12 @@ public class BookingService(IBookingRepository repository)
             return BookingResult.Failure("Customer name is required.");
         }
 
+        if (string.IsNullOrWhiteSpace(booking.RoomName))
+        {
+            return BookingResult.Failure("Room name is required.");
+        }
+
+
         if (!Rooms.TryGetValue(booking.RoomName, out var room))
         {
             return BookingResult.Failure("The selected room does not exist.");
