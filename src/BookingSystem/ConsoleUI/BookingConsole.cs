@@ -70,20 +70,8 @@ public class BookingConsole(BookingService service)
         var date = ReadDate("Date (yyyy-MM-dd): ");
         var startTime = ReadTime("Start time (HH:mm): ");
         var endTime = ReadTime("End time (HH:mm): ");
-
-        int participants;
-        while (true)
-        {
-            Console.Write("Participants: ");
-            if (int.TryParse(Console.ReadLine(), out participants))
-                break;
-            else
-            {
-                Console.WriteLine("Enter a valid number.");
-                continue;
-            }
-                
-        }
+        var participants = ReadValidParticipants();
+        
         
             
 
@@ -100,6 +88,23 @@ public class BookingConsole(BookingService service)
 
         var result = service.Create(booking);
         Console.WriteLine(result.Message);
+    }
+
+    public static int ReadValidParticipants()
+    {
+        int participants;
+        while (true)
+        {
+            Console.Write("Participants: ");
+            if (int.TryParse(Console.ReadLine(), out participants))
+                return participants;
+            else
+            {
+                Console.WriteLine("Enter a valid number.");
+                continue;
+            }
+
+        }
     }
 
     private void CancelBooking()
