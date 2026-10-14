@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/Docs/">
-    <File Path="DEBUGGING.md" />
+    <File Path="docs/DEBUGGING.md" />
   </Folder>
   <Project Path="src/BookingSystem/BookingSystem.csproj" />
   <Project Path="tests/BookingSystem.Tests/BookingSystem.Tests.csproj" />
